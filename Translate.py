@@ -24,6 +24,10 @@ while 1:
         break
     response = requests.post(url=url,data=data,headers=head)
     name = response.json()
-    print(name['translateResult'][0][0]['tgt'])
+    if name['errorCode']!=0:
+        print("#errorCode ",end="")
+        print(name['errorCode'],end="")
+    else:
+        print(name['translateResult'][0][0]['tgt'],end="")
     print("\n")
     
